@@ -125,7 +125,7 @@ def client():
     global QUALITY, SESSION
     splash()
 
-    token = SESSION.tokens().get("user-read-email")
+    token = SESSION.tokens().get("user-library-read")
 
     if check_premium():
         print("[ DETECTED PREMIUM ACCOUNT - USING VERY_HIGH QUALITY ]\n\n")
@@ -831,7 +831,7 @@ def get_albums_artist(access_token, artists_id):
 
 def download_playlist(playlists, playlist_choice):
     """Downloads all the songs from a playlist"""
-    token = SESSION.tokens().get("user-read-email")
+    token = SESSION.tokens().get("playlist-read-private")
 
     playlist_songs = get_playlist_songs(
         token, playlists[int(playlist_choice) - 1]['id'])
@@ -845,7 +845,7 @@ def download_playlist(playlists, playlist_choice):
 
 def download_from_user_playlist():
     """ Select which playlist(s) to download """
-    token = SESSION.tokens().get("user-read-email")
+    token = SESSION.tokens().get("playlist-read-private")
     playlists = get_all_playlists(token)
 
     count = 1
